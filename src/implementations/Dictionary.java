@@ -78,10 +78,32 @@ public class Dictionary<K,V> implements DictionaryADT<K,V>
 		return true;
 	}
 
+	/**
+	 * Mutator method that removes a specified key:value pair from the Dictionary.
+	 *
+	 * Precondition: Dictionary object exists and a not null key
+	 * is passed as argument.
+	 *
+	 * Postcondition: The key:value pair is removed from the Dictionary.
+	 *
+	 * @param key The key to remove
+	 * 
+	 * @return the value of the target key we removed || null if key does not exist
+	 */
 	@Override
-	public V remove(K key) {
-		// TODO Auto-generated method stub
-		return null;
+	public V remove(K key)
+	{
+		int keyIndex = keys.indexOf(key);
+
+		if (keyIndex == -1)
+		{
+			return null;
+		}
+
+		V removedValue = values.remove(keyIndex);
+		keys.remove(keyIndex);
+
+		return removedValue;
 	}
 
 	@Override
